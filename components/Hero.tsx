@@ -16,9 +16,6 @@ const Hero: React.FC = () => {
           <Link to="/#tiers" className="bg-blue-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-blue-500 transition-transform duration-300 hover:scale-105">
             Explore Models
           </Link>
-          <Link to="/technology" className="bg-white/10 border border-white/20 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            Core Technology
-          </Link>
           <Link to="/whitepaper" className="bg-white/10 border border-white/20 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105">
             Read Whitepaper
           </Link>

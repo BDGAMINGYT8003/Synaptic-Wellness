@@ -2,10 +2,12 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { PRODUCT_TIERS, COMPARISON_SPECS } from '../constants';
 import BackButton from '../components/BackButton';
+import { usePreOrder } from '../contexts/PreOrderContext';
 
 const ProductDetailPage: React.FC = () => {
   const { tierSlug } = useParams<{ tierSlug: string }>();
   const tier = PRODUCT_TIERS.find(t => t.slug === tierSlug);
+  const { openModal } = usePreOrder();
 
   if (!tier) {
     return <Navigate to="/" />;
@@ -29,7 +31,11 @@ const ProductDetailPage: React.FC = () => {
                 </h1>
                 <p className="text-2xl font-bold my-4 gradient-text">${tier.price}</p>
                 <p className="text-lg text-gray-300 mb-8">{tier.longDescription}</p>
-                 <button className={`w-full bg-white/10 border ${accentClasses[tier.accentColor]} text-white font-semibold py-3 rounded-full hover:bg-white/20 transition-colors duration-300`}>
+                 <button 
+                    type="button"
+                    onClick={() => openModal(tier)}
+                    className={`w-full bg-white/10 border ${accentClasses[tier.accentColor]} text-white font-semibold py-3 rounded-full hover:bg-white/20 transition-colors duration-300`}
+                  >
                     Pre-Order for ${tier.price}
                 </button>
             </div>
@@ -59,7 +65,7 @@ const ProductDetailPage: React.FC = () => {
                   <tbody className="divide-y divide-white/10 bg-[#121212]/50">
                     {COMPARISON_SPECS.map((spec) => (
                       <tr key={spec.feature}>
-                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-6">{spec.feature}</td>
+                        <td className="whitespace-nowrap py-4 pr-3 text-sm font-medium text-white sm:pl-6">{spec.feature}</td>
                         <td className="whitespace-normal px-3 py-4 text-sm text-gray-400">{spec[tier.slug.split('-')[1] as keyof typeof spec]}</td>
                       </tr>
                     ))}
