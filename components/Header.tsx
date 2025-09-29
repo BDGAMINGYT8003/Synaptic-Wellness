@@ -7,13 +7,12 @@ type HeaderNavLinkProps = {
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
-// FIX: Refactored the component from a const arrow function to a standard function declaration.
-// This can resolve subtle type inference issues where the compiler fails to correctly identify all props, like `children`.
-function HeaderNavLink({ to, children, onClick }: HeaderNavLinkProps) {
+// FIX: Reverted component to a const arrow function to resolve a type inference issue where the 'children' prop was not being correctly identified.
+const HeaderNavLink = ({ to, children, onClick }: HeaderNavLinkProps) => {
   return (
     <RouterNavLink to={to} onClick={onClick} className="hover:text-white transition-colors duration-300">{children}</RouterNavLink>
   );
-}
+};
 
 const Header: React.FC = () => {
   const location = useLocation();

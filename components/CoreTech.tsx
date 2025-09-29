@@ -33,7 +33,7 @@ const CoreTech: React.FC = () => {
           ))}
         </div>
         <div className="mt-16 text-center">
-            <Link to="/technology" className="bg-white/10 border border-white/20 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105">
+            <Link to="/technology" className="inline-block bg-white/10 border border-white/20 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-105">
                 Learn More About Our Technology
             </Link>
         </div>
